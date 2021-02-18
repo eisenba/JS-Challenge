@@ -1,6 +1,5 @@
 // from data.js
 var tableData = data;
-//console.log("data :: ", data);
 // YOUR CODE HERE!
 const tableBody = d3.select("#ufo-table-body");
 var button = d3.selectAll("#filter-btn");
@@ -11,19 +10,16 @@ button.on("click", runEnter);
 form.on("submit", runEnter);
 
 function runEnter() {
+  // stop reload
   d3.event.preventDefault();
-  // remove any children from the list
-console.log(tableBody)
-  
   // get form
   var inputElement = d3.select("#datetime");
    // get the date input
   var date = inputElement.property("value")
-   
+  // check for input and filter on date column 
   if(date) {
     filteredData = []
    filteredData = tableData.filter(row => row.datetime === date);
-  console.log(filteredData)
   };
 const col2Data = {
   Date: "datetime",
@@ -44,7 +40,9 @@ const cols = [
   "Duration",
   "Comments",
 ];
+// Clear children in table
 tableBody.html("");
+// Add filtered rows to table
 filteredData.forEach((dataRow) => {
   
   let tableRow = tableBody.append("tr");
