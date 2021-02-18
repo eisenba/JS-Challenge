@@ -44,7 +44,6 @@ const cols = [
 tableBody.html("");
 // Add filtered rows to table
 filteredData.forEach((dataRow) => {
-  
   let tableRow = tableBody.append("tr");
   cols.forEach((col) => tableRow.append("th").text(dataRow[col2Data[col]]));
 });
