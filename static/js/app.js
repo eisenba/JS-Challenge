@@ -2,17 +2,13 @@
 var tableData = data;
 //console.log("data :: ", data);
 // YOUR CODE HERE!
-const tableBody = d3.select("#ufo-table tbody");
+const tableBody = d3.select("#ufo-table");
 var button = d3.selectAll("#filter-btn");
 var form = d3.select("#form")
 
 // Event handlers
 button.on("click", runEnter);
 form.on("submit", runEnter);
-
-
-
-
 
 function runEnter() {
   d3.event.preventDefault();
@@ -50,7 +46,7 @@ const cols = [
   "Duration",
   "Comments",
 ];
-
+tableBody.innerHTML = ""
 filteredData.forEach((dataRow) => {
   let tableRow = tableBody.append("tr");
   cols.forEach((col) => tableRow.append("th").text(dataRow[col2Data[col]]));
