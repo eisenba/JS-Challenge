@@ -3,26 +3,24 @@ var tableData = data;
 //console.log("data :: ", data);
 // YOUR CODE HERE!
 const tableBody = d3.select("#ufo-table tbody");
+var button = d3.selectAll("#filter-btn");
+button.on("click", runEnter);
 function runEnter() {
-  // remove any children from the list to
-  tableBody.html("")
-
-  // Prevent the page from refreshing
   d3.event.preventDefault();
-
-  // Select the input element and get the raw HTML node
+  // remove any children from the list
+   tableBody.html = "";
+  // get form
   var inputElement = d3.select("#datetime");
-
-  // Get the value property of the input element
-  var inputValue = inputElement.property("value");
-
-  console.log(inputValue);
-  console.log(tableData);
-
-  var filteredData = tableData.filter((sighting) => sighting.datetime === inputValue);
+   // get the date input
+  var date = inputElement.property("value")
+   if(date) {
+   filteredData = tableData.filter(row => row.datetime === date);
   console.log(filteredData)
-};
-// tableBody.html = "";
+  };
+
+
+button.on("click", runEnter);
+
 let tableRow = tableBody.append("tr");
 const col2Data = {
   Date: "datetime",
@@ -44,7 +42,9 @@ const cols = [
   "Comments",
 ];
 
-data.forEach((dataRow) => {
+filteredData.forEach((dataRow) => {
   let tableRow = tableBody.append("tr");
   cols.forEach((col) => tableRow.append("th").text(dataRow[col2Data[col]]));
 });
+
+};
