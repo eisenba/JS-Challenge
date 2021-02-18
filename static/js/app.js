@@ -44,7 +44,7 @@ const cols = [
   "Duration",
   "Comments",
 ];
-
+tableBody.html("");
 filteredData.forEach((dataRow) => {
   
   let tableRow = tableBody.append("tr");
