@@ -4,7 +4,16 @@ var tableData = data;
 // YOUR CODE HERE!
 const tableBody = d3.select("#ufo-table tbody");
 var button = d3.selectAll("#filter-btn");
+var form = d3.select("#form")
+
+// Event handlers
 button.on("click", runEnter);
+form.on("submit", runEnter);
+
+
+
+
+
 function runEnter() {
   d3.event.preventDefault();
   // remove any children from the list
@@ -19,7 +28,7 @@ function runEnter() {
   };
 
 
-button.on("click", runEnter);
+
 
 let tableRow = tableBody.append("tr");
 const col2Data = {
