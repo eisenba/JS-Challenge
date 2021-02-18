@@ -1,14 +1,11 @@
 // from data.js
 var tableData = data;
-console.log("data :: ", data);
+//console.log("data :: ", data);
 // YOUR CODE HERE!
 const tableBody = d3.select("#ufo-table tbody");
 function runEnter() {
-  // select the table
-  var list = d3.select(".tbody");
-
   // remove any children from the list to
-  list.html("")
+  tableBody.html("")
 
   // Prevent the page from refreshing
   d3.event.preventDefault();
@@ -20,10 +17,11 @@ function runEnter() {
   var inputValue = inputElement.property("value");
 
   console.log(inputValue);
-  console.log(people);
+  console.log(tableData);
 
-  var filteredData = tableData.filter((sighting) => sighting.bloodType === inputValue);
-
+  var filteredData = tableData.filter((sighting) => sighting.datetime === inputValue);
+  console.log(filteredData)
+};
 // tableBody.html = "";
 let tableRow = tableBody.append("tr");
 const col2Data = {
